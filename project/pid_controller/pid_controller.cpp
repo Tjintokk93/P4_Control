@@ -16,9 +16,9 @@ PID::PID() {}
 PID::~PID() {}
 
 void PID::Init(double Kp, double Ki, double Kd, double output_lim_max, double output_lim_min) {
-   my_kp = Kpi;
-   my_ki = Kii;
-   my_kd = Kdi;
+   my_kp = Kp;
+   my_ki = Ki;
+   my_kd = Kd;
 
    my_output_lim_min = output_lim_min;
    my_output_lim_max = output_lim_max;

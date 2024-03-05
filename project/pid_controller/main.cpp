@@ -59,6 +59,19 @@ using json = nlohmann::json;
 
 #define _USE_MATH_DEFINES
 
+// Init-values according to NEHA question 939702: [0.21, 0.0009, 0.1] (throttle), [0.29, 0.0011, 0.3] (steer)
+static const double KP_THROTTLE = 0.2;
+static const double KI_THROTTLE = 0.0;
+static const double KD_THROTTLE = 0.0;
+static const double MAX_THROTTLE = 1.0;
+static const double MIN_THROTTLE = -1.0;
+
+static const double KP_STEER = 0.3;
+static const double KI_STEER = 0.0;
+static const double KD_STEER = 0.0;
+static const double MAX_STEER = 1.2;
+static const double MIN_STEER = -1.2;
+
 string hasData(string s) {
   auto found_null = s.find("null");
     auto b1 = s.find_first_of("{");
@@ -218,15 +231,15 @@ int main ()
   /**
   * TODO (Step 1): create pid (pid_steer) for steer command and initialize values
   **/
-
+  PID pid_steer = PID();
+  pid_steer.Init(KP_STEER, KI_STEER, KD_STEER, MAX_STEER, MIN_STEER);
 
   // initialize pid throttle
   /**
   * TODO (Step 1): create pid (pid_throttle) for throttle command and initialize values
   **/
-
-  PID pid_steer = PID();
   PID pid_throttle = PID();
+  pid_throttle.Init(KP_THROTTLE, KI_THROTTLE, KD_THROTTLE, MAX_THROTTLE, MIN_THROTTLE);
 
   h.onMessage([&pid_steer, &pid_throttle, &new_delta_time, &timer, &prev_timer, &i, &prev_timer](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode)
   {

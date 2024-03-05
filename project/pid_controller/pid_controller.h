@@ -14,30 +14,21 @@ public:
    * TODO: Create the PID class
    **/
 
-    /*
-    * Errors
-    */
+    double my_p_error{0.0};
+    double my_i_error{0.0};
+    double my_d_error{0.0};
 
-    /*
-    * Coefficients
-    */
+    double my_kp;
+    double my_ki;
+    double my_kd;
 
-    /*
-    * Output limits
-    */
-  
-    /*
-    * Delta time
-    */
+    double my_output_lim_max;
+    double my_output_lim_min;
 
-    /*
-    * Constructor
-    */
+    double delta_t{0.0};
+
+
     PID();
-
-    /*
-    * Destructor.
-    */
     virtual ~PID();
 
     /*

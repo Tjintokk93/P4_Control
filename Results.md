@@ -36,6 +36,7 @@ Test 24|![24_steering](project/pid_controller/screenshot/24_steering.png) | ![24
 
 ### Approach and Observations
 I applied the approach described in this blog: [PID Regler einstellen in der Praxis](https://tlk-energy.de/blog/pid-regler-einstellen)
+
 First, the proportional part has to be adjusted by setting the integral and derivative values to 0. Then the proportional has to be increased until the controller starts to become unstable and oscillates. The proportional has to be set below the point the oscillation starts, thus a small overshoot is allowed.
 Secondly, the integral value gets found by constantly increasing the gain. The goal of tuning the integral value is to align the controller output with the target in the presence of noise or other disturbances. Additionally, this should be achieved in an adequate reaction time. If the controller starts to oscillate or becomes unstable, the value gets adjusted in the opposite direction.
 For a lot of applications a well calibrated PI controller satisfies a good controlling. The derivative value should only be used, if the application benefits from the dampening effects of the derivative. As before, increase the derivative until the overshoot has been dampened to an acceptable level. 
@@ -54,6 +55,7 @@ The individual effects can be well traced in the shown plots.
 
 ### 3. How would you design a way to automatically tune the PID parameters?
 The "twiddle algorithm" or "coordinate ascent" algorithm can be used, as shown in Sebastian's lesson. 
+
 In the application, in my opinion, two things need to be distinguished: firstly, controller optimization, and secondly, overall behavior. In this project, the main focus was primarily on optimizing the overall behaviour, or in other words, avoiding collisions. Here, trajectory planning and controller optimization are examined in combination. However, when it comes to the fundamental controller optimization using an automatic method, the comparison between the desired reference and the controller response should be investigated. This is best done using defined driving maneuvers.
 
 

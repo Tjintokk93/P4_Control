@@ -60,15 +60,15 @@ using json = nlohmann::json;
 #define _USE_MATH_DEFINES
 
 // Init-values according to NEHA question 939702: [0.21, 0.0009, 0.1] (throttle), [0.29, 0.0011, 0.3] (steer)
-static const double KP_THROTTLE = 0.2;
-static const double KI_THROTTLE = 0.0;
-static const double KD_THROTTLE = 0.0;
+static const double KP_THROTTLE = 0.15;
+static const double KI_THROTTLE = 0.001;
+static const double KD_THROTTLE = 0.15;
 static const double MAX_THROTTLE = 1.0;
 static const double MIN_THROTTLE = -1.0;
 
-static const double KP_STEER = 0.3;
-static const double KI_STEER = 0.0;
-static const double KD_STEER = 0.0;
+static const double KP_STEER = 0.6;
+static const double KI_STEER = 0.005;
+static const double KD_STEER = 0.15;
 static const double MAX_STEER = 1.2;
 static const double MIN_STEER = -1.2;
 
